@@ -1,0 +1,147 @@
+/* Base styles remain the same */
+.dashboardContainer {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.patientTable {
+  width: 50%; /* Full width on smaller screens */
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.patientTable td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  min-width: 200px;
+}
+
+.tooltip {
+  cursor: pointer;
+}
+
+.patientTable td:first-child {
+  font-weight: bold;
+  background-color: #f1f1f1;
+  width: 20%;
+}
+
+.patientTable td:last-child {
+  text-align: left;
+  width: 70%;
+}
+
+.patientTable tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* Button styling */
+.button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+  max-width: 160px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button:hover {
+  background-color: #e6b3b3;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:active {
+  background-color: #d58f8f;
+}
+
+.inputField {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 90%;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.selectField {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.selectField option {
+  padding: 5px;
+}
+
+/* Responsive styles for smaller devices */
+@media (max-width: 1000px) {
+  .dashboardContainer {
+    width: 90%; /* Increased width to make it more usable on smaller screens */
+    padding: 15px;
+    margin: 10px auto;
+  }
+
+  .patientTable {
+    width: 100%; /* Full width on smaller screens */
+    margin: 0;
+  }
+
+  .patientTable td {
+    padding: 8px;
+    min-width: auto; /* Allow cells to shrink as needed */
+    font-size: 0.9rem; /* Smaller font size for better readability */
+  }
+
+  h2 {
+    font-size: 22px; /* Reduce font size for headers */
+  }
+
+  .button {
+    font-size: 12px; /* Decrease button font size */
+    padding: 8px 15px; /* Adjust padding for smaller screens */
+    max-width: 100%; /* Allow button to be responsive */
+    width: 100%; /* Button spans full width on smaller screens */
+  }
+
+  .inputField, .selectField {
+    width: 90%; /* Full width for form fields */
+    font-size: 12px; /* Reduce font size */
+    padding: 6px; /* Adjust padding for smaller screens */
+  }
+
+  /* Adjust last column width on smaller screens */
+  .patientTable td:first-child {
+    width: 30%; /* Increase the width of the first column */
+  }
+
+  .patientTable td:last-child {
+    width: 10%; /* Reduce the width of the last column for smaller screens */
+    font-size: 0.9rem; /* Slightly smaller text for the last column */
+  }
+}
