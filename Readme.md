@@ -1,159 +1,184 @@
+# Medico - Medical Management System
 
-# Medico - Hospital Management System
+Medico is a comprehensive medical management system that provides separate interfaces for healthcare providers (admins) and patients to manage medical records, prescriptions, and reports.
 
-## Project Overview
+## 🚀 Features
 
-Medico is a comprehensive hospital management system designed to streamline administrative processes while providing secure access to medical data. The system includes role-based access control for hospital staff (admins) and patients, allowing for efficient management of patient information, prescriptions, and reports. The project also integrates RFID-based UID verification for secure identification.
+### For Healthcare Providers (Admin)
+- **Patient Management**: Register new patients and manage patient information
+- **Dashboard**: View and update patient details in real-time
+- **Prescription Management**: Create, edit, and delete prescriptions
+- **Medical Reports**: Upload, manage, and organize patient medical reports
+- **Secure Access**: Role-based authentication system
 
-## Features
+### For Patients (User)
+- **Personal Dashboard**: View personal medical information
+- **Prescription Access**: View current medication prescriptions
+- **Report Viewer**: Access and download medical reports
+- **Secure Portal**: Private access to personal health data
 
-- **Role-based Access Control**: Admins can manage patients, prescriptions, and reports, while patients have view-only access to their data.
-- **Patient Management**: Admins can add, update, and delete patient details.
-- **Prescription Management**: Admins can manage patient prescriptions. Patients can view their prescribed medications.
-- **Reports Management**: Admins can upload medical reports (PDF, images) for patients. Patients can view their own reports.
-- **Secure Login System**: Role selection and secure login based on RFID-based UID verification.
-- **RFID-based UID Verification**: UID verification ensures secure and personalized access for both admin and patient roles.
-- **Responsive Frontend**: User-friendly and visually appealing interface with a dynamic dashboard for easy navigation.
 
-## Tech Stack
-
-- **Frontend**: React.js, HTML, CSS, JavaScript
-- **Backend**: Node.js with Express.js
-- **Database**: MongoDB
-- **HTTP Requests**: Axios
-- **RFID Integration**: Arduino-based UID reading using RFID
-- **State Management**: React State and Context API for managing user session and data flow
-
-## Backend Routes
-
-| **HTTP Method** | **Endpoint**                     | **Description**                                               | **Role**   |
-|-----------------|----------------------------------|---------------------------------------------------------------|------------|
-| POST            | `/api/auth/login`                | Authenticate user (admin or patient) via UID                   | Admin/User |
-| POST            | `/api/auth/register`             | Register new user (admin or patient)                           | Admin/User |
-| GET             | `/api/auth/logout`               | Log out the current user                                       | Admin/User |
-| GET             | `/api/health/status`             | Check server health and status                                 | Public     |
-| GET             | `/api/patients`                  | Fetch all patient details                                      | Admin      |
-| POST            | `/api/patients`                  | Add a new patient                                              | Admin      |
-| PUT             | `/api/patients/:uid`             | Update patient details by UID                                  | Admin      |
-| DELETE          | `/api/patients/:uid`             | Delete a patient by UID                                        | Admin      |
-| GET             | `/api/prescriptions/:uid`        | Get all prescriptions for a patient                            | Admin/User |
-| POST            | `/api/prescriptions`             | Add a new prescription                                         | Admin      |
-| PUT             | `/api/prescriptions/:id`         | Update an existing prescription by ID                          | Admin      |
-| DELETE          | `/api/prescriptions/:id`         | Delete a prescription by ID                                    | Admin      |
-| GET             | `/api/reports/:uid`              | Get all reports for a patient                                  | Admin/User |
-| GET             | `/api/reports/:filePath`         | Retrieve a specific report file by path                        | Admin/User |
-| POST            | `/api/reports`                   | Upload a new report for a patient                              | Admin      |
-| DELETE          | `/api/reports/:filePath`         | Delete a report by file path                                   | Admin      |
-
-## Frontend Pages
-
-| **Page**                | **Description**                                                            | **Role**   |
-|-------------------------|----------------------------------------------------------------------------|------------|
-| `LoginPage.js`           | Login form for admins and patients with UID verification                   | Admin/User |
-| `RegisterPage.js`        | Register new users (admins and patients)                                   | Admin/User |
-| `DashboardPage.js`       | Admin dashboard for managing patients, prescriptions, and reports          | Admin      |
-| `AddPatientsPage.js`     | Form to add new patient information                                        | Admin      |
-| `EditPatientPage.js`     | Form to update existing patient details                                    | Admin      |
-| `PatientDetailsPage.js`  | View patient details                                                       | Admin      |
-| `PrescriptionsPage.js`   | View and manage patient prescriptions (for admins)                         | Admin      |
-| `AddPrescriptionPage.js` | Form to add new prescriptions for a patient                                | Admin      |
-| `EditPrescriptionPage.js`| Form to update an existing prescription                                    | Admin      |
-| `ReportsPage.js`         | View and manage patient reports (for admins)                               | Admin      |
-| `AddReportPage.js`       | Upload new reports for patients                                            | Admin      |
-| `UserPrescriptionsPage.js`| Patients can view their prescribed medications                            | User       |
-| `UserReportsPage.js`     | Patients can view their uploaded medical reports (PDF, images)             | User       |
-| `VerifyUIDPage.js`       | UID verification page for patients to access their medical records         | User       |
-| `UserDashboard.js`       | Patient dashboard for viewing prescriptions and reports                    | User       |
-| `NotFoundPage.js`        | 404 error page for routes that don’t exist                                 | Public     |
-
-## Environment Variables
-
-To run this project, create a `.env` file in the root directory with the following values:
-
-```
-MONGODB_URI=<your-mongodb-uri>
-PORT=5000
-JWT_SECRET=<your-secret-key>
-```
-
-## Installation & Setup
+## 🛠️ Installation & Setup
 
 ### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-- Node.js and npm installed
-- MongoDB installed and running locally or on a cloud service (e.g., MongoDB Atlas)
-- Arduino setup with RFID integration for UID reading
+### Installation Steps for frontend
 
-### Steps
-
-1. **Clone the repository**  
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/ucs200525/medico.git
+   git clone <repository-url>
+   cd frontend
    ```
 
-2. **Navigate into the project directory**  
-   ```bash
-   cd medico
-   ```
-
-3. **Install server dependencies**  
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-4. **Install client dependencies**  
+3. **Environment Configuration**
+   Create a `.env` file in the root directory:
+   ```env
+   REACT_APP_URI=http://localhost:<Port-Number>
+   ```
+
+4. **Start the development server**
    ```bash
-   cd client
+   npm start
+   ```
+
+### Installation Steps for backend
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd backend
+   ```
+
+2. **Install dependencies**
+   ```bash
    npm install
    ```
 
-5. **Set up environment variables**  
-   Create a `.env` file in the root directory and add the required values (as shown above).
-
-6. **Run the project**  
-   To start both backend and frontend:
-   ```bash
-   npm run server   # Starts the backend server
-   npm start        # Starts the frontend React application
+3. **Environment Configuration**
+   Create a `.env` file in the root directory:
+   ```env
+   PORT = <Port-Number>
+   MONGO_URI = <MongoDb Connection String>
    ```
 
-7. **Access the application**  
-   Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
+4. **Start the development server**
+   ```bash
+   npm start
+   ```
+## 📋 Available Scripts
 
-## Usage
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-### Admin Role
+## 🎯 Usage Guide
 
-1. Login as an admin using your credentials.
-2. Verify your UID using the RFID card.
-3. Use the dashboard to manage patients, prescriptions, and reports.
+### Initial Setup
+1. **Access the Application**: Open your browser and navigate to `http://localhost:3000`
+2. **Role Selection**: Choose between "Healthcare Provider" or "Patient" role
+3. **Authentication**:
+   - **Healthcare Providers**: Login with admin credentials
+   - **Patients**: Automatic login with patient role
 
-### Patient Role
+### For Healthcare Providers
 
-1. Enter your UID to view your details.
-2. Navigate through the different sections to view your prescriptions and reports.
+#### Patient Registration
+1. Navigate to Patient Registration page
+2. Fill in patient details:
+   - Patient ID (unique identifier)
+   - Full Name
+   - Age and Gender
+   - Contact Information (Address, Email, Phone)
+3. Submit to register new patient
 
-## Project Structure
+#### Patient Dashboard
+1. Enter Patient UID on verification page
+2. Access comprehensive patient information
+3. Update individual fields with real-time saving
+4. Manage prescriptions and medical reports
 
-```bash
-medico/
-├── client/               # Frontend React application
-│   ├── src/              # Source files for React
-│   │   ├── components/   # Reusable components
-│   │   ├── pages/        # Individual pages (Login, Dashboard, etc.)
-│   │   ├── App.js        # Main app component
-│   ├── public/           # Public assets (HTML, favicon, etc.)
-│   ├── package.json      # Client-side dependencies
-├── server/               # Backend Express.js server
-│   ├── controllers/      # Route handlers (patients, prescriptions, reports)
-│   ├── models/           # Mongoose models (User, Patient, Prescription, Report)
-│   ├── routes/           # API routes
-│   ├── utils/            # Utility functions (authentication, JWT, etc.)
-│   ├── server.js         # Entry point for backend
-│   ├── config/           # Configuration files (database, environment)
-├── .env                  # Environment variables
-├── README.md             # Documentation
-├── package.json          # Backend dependencies
-└── .gitignore            # Files and directories to be ignored by Git
-```
+#### Prescription Management
+- Add new prescriptions with medication details
+- Edit existing prescriptions
+- Delete prescriptions when needed
+- View prescription history
 
+#### Medical Reports
+- Upload medical reports (PDF, PNG, JPG, JPEG)
+- Organize reports with custom names
+- Edit report information
+- Delete reports as needed
+
+### For Patients
+
+#### Patient Dashboard
+1. Enter your Patient UID
+2. View personal medical information
+3. Access prescriptions and medical reports
+4. Read-only access to health data
+
+#### Prescription Access
+- View current medication prescriptions
+- See dosage and instructions
+- No editing capabilities (read-only)
+
+#### Medical Reports
+- View available medical reports
+- Download reports in original format
+- Organized by report name and upload date
+
+## 🔐 Authentication & Security
+
+- **Role-based Access Control**: Separate interfaces for admins and patients
+- **Token-based Authentication**: JWT tokens for secure API calls
+- **Patient UID Verification**: Required for accessing patient data
+- **Local Storage**: Secure storage of authentication tokens
+
+## 🎨 Styling & UI
+
+- **Component-specific CSS**: Each component has dedicated stylesheet
+- **Responsive Design**: Mobile-friendly interfaces
+- **Consistent Icons**: SVG icons throughout the application
+- **Loading States**: Visual feedback for async operations
+- **Error Handling**: User-friendly error messages
+
+## 🔄 State Management
+
+- **React Context**: For authentication and global state
+- **Local State**: Component-specific state using useState hook
+- **API Integration**: Axios for HTTP requests
+- **Loading States**: Comprehensive loading indicators
+
+
+## 📦 Dependencies
+
+### Main Dependencies
+- `react` - Frontend framework
+- `react-router-dom` - Routing
+- `axios` - HTTP client
+- `context API` - State management
+
+### Development Dependencies
+- Create React App toolchain
+- Testing utilities
+- Build optimization tools
+
+## 🔧 Configuration
+
+### Environment Variables
+- `REACT_APP_URI`: Backend API base URL
+- `PORT` : Port where backend must run
+- `MONGO_URI` : MongoDB database url
+
+### Browser Support
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Mobile browsers
+- Requires JavaScript enabled
